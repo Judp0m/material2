@@ -20,17 +20,22 @@
 ### Example
 The service can be injected in a component.
 ```ts
+import { Component, ViewContainerRef } from '@angular/core';
+import { MdSnackBar, MdSnackBarConfig } from '@angular/material/snack-bar/snack-bar';
+
 @Component({
   selector: 'my-component'
   providers: [MdSnackBar]
 })
 export class MyComponent {
 
- constructor(snackBar: MdSnackBar
-             viewContainerRef: ViewContainerRef) {}
+ constructor(
+   private snackBar: MdSnackBar
+   private viewContainerRef: ViewContainerRef
+ ) {}
 
  failedAttempt() {
-   config = new MdSnackBarConfig(this.viewContainerRef);
+   let config = new MdSnackBarConfig(this.viewContainerRef);
    this.snackBar.open('It didn\'t quite work!', 'Try Again', config);
  }
 
